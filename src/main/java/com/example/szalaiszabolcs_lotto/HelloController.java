@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class HelloController {
     @FXML
@@ -20,16 +17,23 @@ public class HelloController {
     private List<Integer> szamok = new ArrayList<>();
     private Timer timer;
     private int sorsolHelp;
+    private boolean done;
 
     @FXML
     public void btnSorsolClick() {
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(() -> sorsol());
-            }
-        },0, 200);
+        if (szamok.size() != 5) {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(() -> sorsol());
+                }
+            },0, 200);
+        } else {
+            Collections.sort(szamok);
+            labelSorsoltSzamok.setText(kiir());
+            reset();
+        }
     }
 
     public void sorsol() {
@@ -41,6 +45,9 @@ public class HelloController {
                 szamok.add(szam);
                 labelSorsoltSzamok.setText(kiir());
             }
+        } else {
+            timer.cancel();
+            buttonSorsol.setText("Rendez");
         }
     }
 
@@ -50,5 +57,11 @@ public class HelloController {
             s.append(szam).append("\t");
         }
         return s.toString();
+    }
+
+    public void reset() {
+        buttonSorsol.setText("Sorsol");
+        szamok.clear();
+        sorsolHelp = 0;
     }
 }

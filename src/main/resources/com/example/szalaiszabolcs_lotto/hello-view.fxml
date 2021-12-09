@@ -16,7 +16,7 @@
   </rowConstraints>
    <children>
       <Button fx:id="buttonSorsol" mnemonicParsing="false" onAction="#btnSorsolClick" text="Sorsol" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
-      <Label fx:id="labelSorsoltSzam" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-      <Label fx:id="labelSorsoltSzamok" text="Label" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label fx:id="labelSorsoltSzam" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+      <Label fx:id="labelSorsoltSzamok" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
    </children>
 </GridPane>

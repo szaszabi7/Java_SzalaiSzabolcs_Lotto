@@ -22,6 +22,7 @@ public class HelloController {
     @FXML
     public void btnSorsolClick() {
         if (szamok.size() != 5) {
+            labelSorsoltSzamok.setText("");
             timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
@@ -42,6 +43,10 @@ public class HelloController {
             labelSorsoltSzam.setText(String.format("%d", szam));
             sorsolHelp++;
             if (sorsolHelp % 10 == 0) {
+                while (szamok.contains(szam)) {
+                    szam = (int) (Math.random() * 90 + 1);
+                    labelSorsoltSzam.setText(String.format("%d", szam));
+                }
                 szamok.add(szam);
                 labelSorsoltSzamok.setText(kiir());
             }
